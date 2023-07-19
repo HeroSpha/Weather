@@ -337,27 +337,26 @@
 
   <div class="card-container" *ngIf="weatherDetails">
 
-    <div class="mt-3">
-      <div class="row">
-        <div class="col">
-          <input type="number" [(ngModel)]="latitude" class="form-control" placeholder="First name"
-            aria-label="First name">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <span>Temperature: <span class="fw-bolder">{{weatherDetails.current_weather.temperature}}</span></span>
         </div>
-        <div class="col">
-          <input type="number" [(ngModel)]="longitude" class="form-control" placeholder="Last name"
-            aria-label="Last name">
+        <div class="card">
+          <span>Wind Speed: <span class="fw-bolder">{{weatherDetails.current_weather.windspeed}} km/h</span></span>
         </div>
-        <button class="button" (click)="getWeatherDetails()" [disabled]="longitude <= 0 || latitude <= 0">Get
-          Weather</button>
-
       </div>
     </div>
-    <div class="card">
-      <span>Temperature: <span class="fw-bolder">{{weatherDetails.current_weather.temperature}}</span></span>
+    <div class="row">
+      <div class="mt-3">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart" [datasets]="chartData" [labels]="chartLabels"
+            [options]="chartOptions"></canvas>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <span>Wind Speed: <span class="fw-bolder">{{weatherDetails.current_weather.windspeed}} km/h</span></span>
-    </div>
+
+
 
   </div>
 
